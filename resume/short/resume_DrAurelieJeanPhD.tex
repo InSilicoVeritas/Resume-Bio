@@ -1,0 +1,264 @@
+\documentclass[a4paper,oneside]{article}
+
+%\usepackage[francais]{babel} 
+\usepackage[latin1]{inputenc}  % les accents dans le fichier.tex
+\usepackage{vmargin} %left, top, right, bottom
+\usepackage{color}
+\setmarginsrb{2cm}{1.2cm}{2cm}{1.2cm}{0cm}{0cm}{0cm}{0cm}
+\usepackage{hyperref}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Définition de quelques macros    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ligne horizontale sur toute la page. Usage : \ligne{Largeur}
+\newcommand{\ligne}[1]{\rule[0.5ex]{\textwidth}{#1}\\}
+\newcommand{\interRubrique}{\bigskip}
+\newcommand{\styleRub}[1]{\noindent\textbf{\large #1}\par}
+\newcommand{\indentStd}{\noindent\hspace{\lenA}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% L'environnement "rubrique" 
+%
+% Usage : \begin{rubrique}[Indentation]{Titre} [...] \end{rubrique}
+% Ensuite, la première colonne contient par exemple les dates, la seconde
+% le descriptif.
+% Par exemple :
+%
+% \begin{rubrique}{3.5cm}{pipotage}
+% 1999--2000 	& ligne 1\\
+% 		& ligne 2\\
+% 1998--1999	& ligne 1\\
+% [etc...]
+% \end{rubrique}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{rubrique}[2][\linewidth] {
+\styleRub{#2}
+\setlength{\lenB}{#1}
+\setlength{\lenC}{\linewidth}
+\addtolength{\lenC}{-\lenA}
+\addtolength{\lenC}{-\lenB}
+\addtolength{\lenC}{-\parindent}
+\addtolength{\lenC}{-9pt}
+\indentStd\begin{tabular}[t]{p{\lenB}p{\lenC}}
+    }
+{\end{tabular}}
+
+
+\newenvironment{header}[2][\linewidth] {
+\styleRub{#2}
+\setlength{\lenB}{#1}
+\setlength{\lenC}{\linewidth}
+\addtolength{\lenC}{-\lenA}
+\addtolength{\lenC}{-\lenB}
+\addtolength{\lenC}{-\parindent}
+\addtolength{\lenC}{-9pt}
+\indentStd\begin{tabular}[t]{p{\lenB}ll}
+    }
+{\end{tabular}}
+
+%\newenvironment{header}[2][\linewidth] {
+%\styleRub{#2}
+%\setlength{\lenB}{#1}
+%\setlength{\lenC}{\linewidth}
+%\addtolength{\lenC}{-\lenA}
+%\addtolength{\lenC}{-\lenB}
+%\addtolength{\lenC}{-\parindent}
+%\addtolength{\lenC}{-9pt}
+%\indentStd\begin{tabular}[t]{p{\lenB}ll}
+%    }
+%{\end{tabular}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Commandes utilisables dans le descriptif %
+%
+% Modifiables à loisir...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\lieu}[1]{\small{\textsl{#1}\ }}
+\newcommand{\activite}[1]{\textbf{#1}\ }
+\newcommand{\comment}[1]{\textsl{#1}\ }
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Début du CV proprement dit (ouf ! :) ) %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{empty} % pour ne pas indiquer de numéro de page...
+\begin{document}
+\newlength{\lenA} % indentation au début d'une ligne
+\setlength{\lenA}{0.cm}
+\newlength{\lenB} % Taille champ dates
+\newlength{\lenC} % Taille champ description
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% en-tête 			%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+
+\begin{header}[13.5cm]{}		
+    \hline \\
+    \vspace{-.6cm}
+    \begin{center}\hspace{2.5cm}\textbf{\large{Dr. Aur\'elie Jean, Ph.D}}\end{center}
+    %\vspace{-.45cm}\\
+    \vspace{-2.0cm}\\
+    \begin{center}\hspace{2.7cm}\large{Computational Scientist and Entrepreneur}\end{center} \\
+    \hline \\
+    \textbf{In Silico Veritas, LLC} &\footnotesize{(USA): +1 814 933 9787}\\
+    {CEO and Founder} & \footnotesize{(FR): +33 6 37 99 98 48} \\
+    \href{https://www.insilicoveritas.org/}{\textcolor{blue}{website}} & \footnotesize{aurelie@silicoveritas.com} \\ 
+    \vspace{0.1cm}
+    & \\
+    \href{https://www.linkedin.com/in/aur%C3%A9lie-jean-phd-aa045932}{\textcolor{blue}{Linkedin}}, \href{https://twitter.com/Aurelie_JEAN}{\textcolor{blue}{Twitter}}
+  
+\end{header}
+
+
+\bigskip 
+
+\vspace{0.5cm}
+
+%%%%%%%%%%%%%%%%%%
+% Bloc rubriques %
+%%%%%%%%%%%%%%%%%%
+
+
+\begin{rubrique}[2.8cm]{\small{WORK EXPERIENCE}}
+    \ligne{0.1mm}
+    2016--present 
+    & \activite{CEO and Founder}   \textcolor{blue}{\textbf{In Silico Veritas, LLC (New York City, USA)}.} \\
+                & - Consulting agency for data and AI strategies, algorithm analysis \& development and, technology training.\\
+& \\		
+    2018--present 
+    & \activite{Guest Lecturer}   \textcolor{blue}{\textbf{(Europe and USA)}.} \\
+                & - Duke Corporate Education, INSEAD, IE Business School, UNICON (MIT Sloan).\\ 
+& \\		
+    2018--present 
+    & \activite{Expert}   \textcolor{blue}{\textbf{(Europe and USA)}.} \\
+    & - Nexus Frontier Tech, CSA (Comit\'e Sup\'erieur de l'Audiovisuel Francais), Demain.AI, Institut Sapiens.\\
+& \\		
+    2016--present 
+    & \activite{Contributing Editor}   \textcolor{blue}{\textbf{(France and USA)}.} \\
+                & - 1nstant magazine, L'ADN, Le Point, Les Echos, L'Opinion. \\
+& \\		
+    2017--2018
+    & \activite{CTO/CIO and co-Founder}   \textcolor{blue}{\textbf{MixR (Los Angeles, USA)}.} \\
+                & - Social Media Network. \\
+& \\		
+    2016--2017 
+    & \activite{Senior Software Developer}   \textcolor{blue}{\textbf{Bloomberg, LP (New York City, USA)}.} \\
+                & - Engineering (formerly R\&D) Equities, Earnings \& Estimates team.\\
+& \\		
+    2014--2016 
+    & \activite{Software Developer Consultant}   \textcolor{blue}{\textbf{ParaSim, Inc (Cambridge, USA)}.} \\
+                & - Development of a C++/Python computational framework for large scale simulations.\\
+                & - Development of a graphical user interface in Python.\\
+                & - Large data analysis and fluid-solid simulations in C++ and Python.\\
+& \\		
+  
+    2011 -- 2016
+    & \activite{Postdoctoral Associate}   \textcolor{blue}{\textbf{Massachusetts Institute of Technology (MIT) (Cambridge, USA)}.} \\
+                & Supervised by Prof. R. Radovitzky at the Institute for Soldier Nanotechnologies (ISN).\\
+                & - Co-architect of a C++ Finite Element code for large scale simulations.\\
+                & - Computational modeling of blast-head interaction to analyze mechanisms of traumatic brain injury and to develop risk criteria scaled from animals to humans.\\ 
+                & Projects funded by ISN, Army Research Laboratory, PEO Soldiers and Office of Naval Research.\\
+& \\
+    2009 -- 2011 
+    & \activite{Postdoctoral Associate}   \textcolor{blue}{\textbf{The Pennsylvania State University (State College, USA)}.} \\
+                & Supervised of Prof. G. C. Engelmayr, Jr. in the Tissue Engineering and Regenerative Medicine Lab, Department of Bioengineering.\\
+                & - Mathematical and computational modeling of scaffolds morphology and mechanical response for myocardial and heart valve tissue engineering.\\
+                & - Computational modeling of cardiac engineered tissues mechanical response: interactions of cardiomyocytes with collagenenous matrix and scaffold.\\
+                & - Computational and experimental characterization of collagen fibrils organization in scaffolds.\\
+& \\
+    2006 -- 2009 
+    & \activite{Research Engineer}   \textcolor{blue}{\textbf{Michelin (Paris, France)}} during PhD training. \\
+\end{rubrique}
+
+\interRubrique
+\newpage
+\vskip 0.3cm
+\begin{rubrique}[2.8cm]{\small{EDUCATION}}
+    \ligne{0.1mm}
+    2011 -- 2016
+    & \textbf{Postdoctoral training in Computational Biomechanics} \\ & \textbf{\textcolor{blue}{Massachussetts Institute of Technology (USA)}}\\
+& \\
+    2009 -- 2011
+    & \textbf{Postdoctoral training in Computational Biomechanics} \\ & \textbf{\textcolor{blue}{The Pennsylvania State University (USA)}}\\
+& \\
+    2005 -- 2009
+    & \textbf{PhD in Material Sciences and Engineering with a minor in Mathematical Morphology and Computational Mechanics} - \textbf{\textcolor{blue}{Mines ParisTech (France)}}\\
+    & Thesis: \em{Rubber with Carbon black fillers -- from the nanoscopic structure to the macroscopic behaviour} \\
+& \\
+    2003 -- 2005
+    & \textbf{Master in Mechanical Sciences with a major in Civil Engineering} - \textbf{\textcolor{blue}{\'Ecole Normale Supérieure de Cachan and Universit\'e Pierre \& Marie Curie, (France)}} \\ 
+    & Research Ministry fellowhip with honors\\
+ & \\
+    2003 
+    & \textbf{Licence in Mechanical Sciences and Technology (eq. 4th year of Bachelor)}- \textbf{\textcolor{blue}{\'Ecole Normale Sup\'erieure de Cachan and Universit\'e Pierre \& Marie Curie, (France)}} \\
+& \\
+    2000 -- 2002
+    & \textbf{DEUG in Physics and Mathematics (eq. 2nd and 3rd years of Bachelor)} with a major in Mechanical Sciences - \textbf{\textcolor{blue}{Universit\'e Pierre \& Marie Curie, (France)}}\\
+\end{rubrique}
+
+\vskip 0.3cm
+\interRubrique
+\vskip 0.3cm
+
+
+\begin{rubrique}[2.8cm]{\small{SKILLS}}
+    \ligne{0.1mm}
+    Programming 
+    & C++ (expert), Python (advanced), Matlab (advanced), Javascript (basic), Fortran (basic), awk, sed, SQL, \LaTeX. \\
+    Languages & French (native), English (fluent), Spanish (basic knowledge)\\
+    Others & Public speaking, Writing, Management.
+\end{rubrique}
+
+\vskip 0.3cm
+
+\interRubrique
+
+
+\vskip 0.3cm
+
+\begin{rubrique}[2.8cm]{\small{LEADERSHIP EXPERIENCE}}
+    \ligne{0.1mm}
+         2018 & \textbf{Ambassador} of the Iron Car competition in France for autonomous car.\\
+& \\
+         2018 & \textbf{Ambassador} of the first promotion of the Microsoft AI school.\\
+& \\
+         2016--2018 & \textbf{Board Member} in the organization \textit{Quelques Femmes du Num\'erique} (France).\\
+& \\
+         2011--2016 & \textbf{co-Leader} of the development of a computational framework (software) to solve large-scale problems in mechanics. Software currently used by the U.S. Army.\\
+& \\
+         2015--present & Actively engaged in mentoring students and young professionals, especially women in STEM fields.\\
+& \\
+         2012--2014 & \textbf{Leader} in the development of a new format for the \emph{Structural Mechanics} undergraduate class at MIT, including the development of the class notes, the website, as well as audio recording and live broadcasting.\\
+& \\
+         2006-2007 & \textbf{Delegate} of PhD Students at Research Council of Centre des Mat\'eriaux of Mines ParisTech.\\
+& \\
+	 2005--2006 & \textbf{President} of PhD Student Association in Centre des Mat\'eriaux of Mines ParisTech. 
+\end{rubrique}
+
+\interRubrique
+\begin{rubrique}[2.8cm]{\small{AWARDS, FELLOWSHIPS}}
+    \ligne{0.1mm}
+	 2011 & \textbf{Travel award} for the 11$^{th}$ US National Congress on Computational Mechanics.\\
+& \\
+         2004--2005 & Research Ministry \textbf{scholarship with honors} during the 2nd year of Master at \'Ecole Normale Sup\'erieure de Cachan and University Pierre and Marie CURIE, Paris (France).\\
+& \\
+	 2004 & Regional Council of Ile de France \textbf{fellowship with honors} for a summer internship at University of Boulder, Colorado (USA).
+\end{rubrique}
+
+
+\end{document}
+
+
+
